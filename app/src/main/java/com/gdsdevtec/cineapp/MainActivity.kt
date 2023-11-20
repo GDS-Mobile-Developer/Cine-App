@@ -3,11 +3,16 @@ package com.gdsdevtec.cineapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.gdsdevtec.cineapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private val binding  by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        installSplashScreen()
+        setContentView(binding.root)
     }
 }
