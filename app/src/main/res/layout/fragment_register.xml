@@ -107,6 +107,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ck_remember_me" />
 
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/progress_loading"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/loading"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_sign_up_register"
+            app:layout_constraintVertical_bias="0.0" />
+
+
         <LinearLayout
             android:id="@+id/or_text_divisor"
             android:layout_width="match_parent"
@@ -118,7 +132,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_sign_up_register">
+            app:layout_constraintTop_toBottomOf="@+id/progress_loading">
 
             <View
                 android:layout_width="match_parent"
