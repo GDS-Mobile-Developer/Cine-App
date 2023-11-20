@@ -5,6 +5,8 @@ import android.util.Patterns
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 
 fun Fragment.messageToast(msg: String) = Toast.makeText(
     requireContext(), msg, Toast.LENGTH_SHORT
@@ -27,4 +29,15 @@ fun String.isEmailValid(): Boolean {
 
 fun String.isPasswordValid(): Boolean {
     return this.length >= 6
+}
+
+fun Fragment.nextFragment(action : NavDirections){
+    findNavController().navigate(action)
+}
+fun Fragment.popFragment(id : Int,inclusive : Boolean){
+    findNavController().popBackStack(id,inclusive)
+}
+
+fun Fragment.popFragment(){
+    findNavController().popBackStack()
 }

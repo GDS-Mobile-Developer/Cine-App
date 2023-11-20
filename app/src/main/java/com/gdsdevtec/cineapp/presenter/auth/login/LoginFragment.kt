@@ -15,6 +15,8 @@ import com.gdsdevtec.cineapp.utils.hideKeyboard
 import com.gdsdevtec.cineapp.utils.isEmailValid
 import com.gdsdevtec.cineapp.utils.isPasswordValid
 import com.gdsdevtec.cineapp.utils.messageToast
+import com.gdsdevtec.cineapp.utils.nextFragment
+import com.gdsdevtec.cineapp.utils.popFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,6 +41,15 @@ class LoginFragment : Fragment() {
         binding.btnSignInLogin.setOnClickListener {
             validateData()
         }
+        binding.btnBack.setOnClickListener {
+            popFragment()
+        }
+        binding.btnResetPassword.setOnClickListener {
+            nextFragment(LoginFragmentDirections.toForgotFragment())
+        }
+        binding.btnSignUpRegister.setOnClickListener {
+            nextFragment(LoginFragmentDirections.toRegisterFragment())
+        }
         Glide
             .with(requireContext())
             .load(R.drawable.loading)
@@ -55,13 +66,13 @@ class LoginFragment : Fragment() {
     private fun validateEmail(email: String, password: String) {
         if (email.isEmailValid()) {
             validatePassword(password, email)
-        } else passwordInvalid()
+        } else emailInvalid()
     }
 
     private fun validatePassword(password: String, email: String) {
         if (password.isPasswordValid()) {
             loginUser(email, password)
-        } else emailInvalid()
+        } else passwordInvalid()
     }
 
     private fun passwordInvalid() = binding.editPassword.apply {
