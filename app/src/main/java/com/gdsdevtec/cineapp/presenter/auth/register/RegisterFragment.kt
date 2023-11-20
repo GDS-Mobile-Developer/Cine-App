@@ -1,5 +1,6 @@
 package com.gdsdevtec.cineapp.presenter.auth.register
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.gdsdevtec.cineapp.R
 import com.gdsdevtec.cineapp.databinding.FragmentRegisterBinding
+import com.gdsdevtec.cineapp.presenter.main.activity.MainActivity
 import com.gdsdevtec.cineapp.utils.FirebaseHelper
 import com.gdsdevtec.cineapp.utils.StateView
 import com.gdsdevtec.cineapp.utils.hideKeyboard
@@ -86,9 +88,9 @@ class RegisterFragment : Fragment() {
             when (stateView) {
                 is StateView.Loading -> binding.progressLoading.isVisible = true
                 is StateView.Success -> {
-                    messageToast("success")
+                    startActivity(Intent(requireContext(), MainActivity::class.java))
+                    requireActivity().finish()
                 }
-
                 is StateView.Error -> {
                     binding.progressLoading.isVisible = false
                     showSnackBar(msg = FirebaseHelper.validError(stateView.msg))
