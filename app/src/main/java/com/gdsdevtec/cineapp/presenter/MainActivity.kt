@@ -1,4 +1,4 @@
-package com.gdsdevtec.cineapp
+package com.gdsdevtec.cineapp.presenter
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
