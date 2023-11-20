@@ -12,6 +12,7 @@ import com.gdsdevtec.cineapp.R
 import com.gdsdevtec.cineapp.databinding.FragmentForgotBinding
 import com.gdsdevtec.cineapp.utils.StateView
 import com.gdsdevtec.cineapp.utils.hideKeyboard
+import com.gdsdevtec.cineapp.utils.initToolbar
 import com.gdsdevtec.cineapp.utils.isEmailValid
 import com.gdsdevtec.cineapp.utils.messageToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,6 +33,7 @@ class ForgotFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
+        initToolbar(binding.toolbar2)
     }
 
     private fun initListeners() {

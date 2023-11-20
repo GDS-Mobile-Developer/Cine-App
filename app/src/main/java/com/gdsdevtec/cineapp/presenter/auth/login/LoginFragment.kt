@@ -12,11 +12,11 @@ import com.gdsdevtec.cineapp.R
 import com.gdsdevtec.cineapp.databinding.FragmentLoginBinding
 import com.gdsdevtec.cineapp.utils.StateView
 import com.gdsdevtec.cineapp.utils.hideKeyboard
+import com.gdsdevtec.cineapp.utils.initToolbar
 import com.gdsdevtec.cineapp.utils.isEmailValid
 import com.gdsdevtec.cineapp.utils.isPasswordValid
 import com.gdsdevtec.cineapp.utils.messageToast
 import com.gdsdevtec.cineapp.utils.nextFragment
-import com.gdsdevtec.cineapp.utils.popFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,15 +34,13 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar(binding.toolbar)
         initListeners()
     }
 
     private fun initListeners() {
         binding.btnSignInLogin.setOnClickListener {
             validateData()
-        }
-        binding.btnBack.setOnClickListener {
-            popFragment()
         }
         binding.btnResetPassword.setOnClickListener {
             nextFragment(LoginFragmentDirections.toForgotFragment())
