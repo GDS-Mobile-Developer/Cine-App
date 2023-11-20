@@ -11,6 +11,8 @@ import com.bumptech.glide.Glide
 import com.gdsdevtec.cineapp.R
 import com.gdsdevtec.cineapp.databinding.FragmentForgotBinding
 import com.gdsdevtec.cineapp.utils.StateView
+import com.gdsdevtec.cineapp.utils.hideKeyboard
+import com.gdsdevtec.cineapp.utils.isEmailValid
 import com.gdsdevtec.cineapp.utils.messageToast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -43,15 +45,24 @@ class ForgotFragment : Fragment() {
     }
 
     private fun validateData() {
-        val password = binding.editPassword.text.toString().trim()
-        if (password.isNotBlank()) {
-            forgotPassword(password)
-        } else {
-            messageToast("vazio")
-        }
+        validateEmail(
+            email = binding.editEmail.text.toString().trim()
+        )
+    }
+
+    private fun validateEmail(email: String) {
+        if (email.isEmailValid()) {
+            forgotPassword(email)
+        } else emailInvalid()
+    }
+
+    private fun emailInvalid() = binding.editEmail.apply {
+        error = "Email invalido"
+        requestFocus()
     }
 
     private fun forgotPassword(password: String) {
+        hideKeyboard()
         viewModel.forgotPassword(password).observe(viewLifecycleOwner) { stateView ->
             when (stateView) {
                 is StateView.Loading -> binding.progressLoading.isVisible = true

@@ -11,6 +11,9 @@ import com.bumptech.glide.Glide
 import com.gdsdevtec.cineapp.R
 import com.gdsdevtec.cineapp.databinding.FragmentRegisterBinding
 import com.gdsdevtec.cineapp.utils.StateView
+import com.gdsdevtec.cineapp.utils.hideKeyboard
+import com.gdsdevtec.cineapp.utils.isEmailValid
+import com.gdsdevtec.cineapp.utils.isPasswordValid
 import com.gdsdevtec.cineapp.utils.messageToast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -44,20 +47,37 @@ class RegisterFragment : Fragment() {
     }
 
     private fun validateData() {
-        val email = binding.editEmail.text.toString().trim()
-        val password = binding.editPassword.text.toString().trim()
-        if (email.isNotBlank()) {
-            if (password.isNotBlank()) {
-                registerUser(email, password)
-            } else {
-                messageToast("vazio")
-            }
-        } else {
-            messageToast("vazio")
-        }
+        validateEmail(
+            email = binding.editEmail.text.toString().trim(),
+            password = binding.editPassword.text.toString().trim()
+        )
     }
 
+    private fun validateEmail(email: String, password: String) {
+        if (email.isEmailValid()) validatePassword(password, email)
+        else emailInvalid()
+    }
+
+    private fun validatePassword(password: String, email: String) {
+        if (password.isPasswordValid()) registerUser(
+            email, password
+        )
+        else passwordInvalid()
+    }
+
+    private fun passwordInvalid() = binding.editPassword.apply {
+        error = "Senha invalida"
+        requestFocus()
+    }
+
+    private fun emailInvalid() = binding.editEmail.apply {
+        error = "Email invalido"
+        requestFocus()
+    }
+
+
     private fun registerUser(email: String, password: String) {
+        hideKeyboard()
         viewModel.register(email, password).observe(viewLifecycleOwner) { stateView ->
             when (stateView) {
                 is StateView.Loading -> binding.progressLoading.isVisible = true
