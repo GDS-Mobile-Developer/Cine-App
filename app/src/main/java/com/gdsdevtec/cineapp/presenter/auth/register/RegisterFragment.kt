@@ -46,8 +46,8 @@ class RegisterFragment : Fragment() {
     private fun validateData() {
         val email = binding.editEmail.text.toString().trim()
         val password = binding.editPassword.text.toString().trim()
-        if (email.isBlank()) {
-            if (password.isBlank()) {
+        if (email.isNotBlank()) {
+            if (password.isNotBlank()) {
                 registerUser(email, password)
             } else {
                 messageToast("vazio")
