@@ -11,8 +11,10 @@
         android:label="fragment_onboarding"
         tools:layout="@layout/fragment_onboarding" >
         <action
-            android:id="@+id/action_onboardingFragment_to_homeAuthFragment"
-            app:destination="@id/authentication_graph" />
+            android:id="@+id/to_homeAuthFragment"
+            app:destination="@id/authentication_graph"
+            app:popUpTo="@id/onboardingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <navigation android:id="@+id/authentication_graph"
         app:startDestination="@id/homeAuthFragment">
@@ -25,17 +27,18 @@
             android:id="@+id/registerFragment"
             android:name="com.gdsdevtec.cineapp.presenter.auth.register.RegisterFragment"
             android:label="fragment_register"
-            tools:layout="@layout/fragment_register" />
+            tools:layout="@layout/fragment_register" >
+        </fragment>
         <fragment
             android:id="@+id/homeAuthFragment"
             android:name="com.gdsdevtec.cineapp.presenter.auth.home.HomeAuthFragment"
             android:label="HomeAuthFragment"
             tools:layout="@layout/fragment_home_auth">
             <action
-                android:id="@+id/action_homeAuthFragment_to_loginFragment"
+                android:id="@+id/to_loginFragment"
                 app:destination="@id/loginFragment" />
             <action
-                android:id="@+id/action_homeAuthFragment_to_registerFragment"
+                android:id="@+id/to_registerFragment"
                 app:destination="@id/registerFragment" />
         </fragment>
         <fragment
@@ -44,8 +47,11 @@
             android:label="fragment_login"
             tools:layout="@layout/fragment_login">
             <action
-                android:id="@+id/action_loginFragment_to_forgotFragment"
+                android:id="@+id/to_forgotFragment"
                 app:destination="@id/forgotFragment" />
+            <action
+                android:id="@+id/to_registerFragment"
+                app:destination="@id/registerFragment" />
         </fragment>
     </navigation>
 </navigation>

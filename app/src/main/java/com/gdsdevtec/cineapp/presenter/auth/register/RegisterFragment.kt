@@ -15,6 +15,7 @@ import com.gdsdevtec.cineapp.utils.hideKeyboard
 import com.gdsdevtec.cineapp.utils.isEmailValid
 import com.gdsdevtec.cineapp.utils.isPasswordValid
 import com.gdsdevtec.cineapp.utils.messageToast
+import com.gdsdevtec.cineapp.utils.popFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,6 +39,9 @@ class RegisterFragment : Fragment() {
     private fun initListeners() {
         binding.btnSignUpRegister.setOnClickListener {
             validateData()
+        }
+        binding.btnBack.setOnClickListener {
+            popFragment()
         }
         Glide
             .with(requireContext())

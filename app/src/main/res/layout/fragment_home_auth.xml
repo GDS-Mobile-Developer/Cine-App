@@ -138,6 +138,7 @@
             app:layout_constraintTop_toBottomOf="@id/or_text_divisor" />
 
         <LinearLayout
+            android:id="@+id/btn_sign_up_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
