@@ -2,9 +2,10 @@ package com.gdsdevtec.cineapp.data.repository.auth
 
 import com.gdsdevtec.cineapp.domain.repository.auth.FirebaseAuthentication
 import com.google.firebase.auth.FirebaseAuth
+import javax.inject.Inject
 import kotlin.coroutines.suspendCoroutine
 
-class FirebaseAuthenticationImpl(
+class FirebaseAuthenticationImpl @Inject constructor(
     private val auth: FirebaseAuth,
 ) : FirebaseAuthentication {
     override suspend fun register(email: String, password: String) {

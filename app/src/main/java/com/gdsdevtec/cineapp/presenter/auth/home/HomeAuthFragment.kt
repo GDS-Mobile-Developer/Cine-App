@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.gdsdevtec.cineapp.databinding.FragmentHomeAuthBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeAuthFragment : Fragment() {
     private lateinit var binding: FragmentHomeAuthBinding
     override fun onCreateView(
