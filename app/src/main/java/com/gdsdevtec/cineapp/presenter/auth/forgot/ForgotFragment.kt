@@ -10,11 +10,13 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.gdsdevtec.cineapp.R
 import com.gdsdevtec.cineapp.databinding.FragmentForgotBinding
+import com.gdsdevtec.cineapp.utils.FirebaseHelper
 import com.gdsdevtec.cineapp.utils.StateView
 import com.gdsdevtec.cineapp.utils.hideKeyboard
 import com.gdsdevtec.cineapp.utils.initToolbar
 import com.gdsdevtec.cineapp.utils.isEmailValid
 import com.gdsdevtec.cineapp.utils.messageToast
+import com.gdsdevtec.cineapp.utils.showSnackBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -74,7 +76,7 @@ class ForgotFragment : Fragment() {
 
                 is StateView.Error -> {
                     binding.progressLoading.isVisible = false
-                    messageToast(stateView.msg)
+                    showSnackBar(msg = FirebaseHelper.validError(stateView.msg))
                 }
             }
         }

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.gdsdevtec.cineapp.R
+import com.google.android.material.snackbar.Snackbar
 
 fun Fragment.messageToast(msg: String) = Toast.makeText(
     requireContext(), msg, Toast.LENGTH_SHORT
@@ -34,16 +35,17 @@ fun String.isPasswordValid(): Boolean {
     return this.length >= 6
 }
 
-fun Fragment.nextFragment(action : NavDirections){
+fun Fragment.nextFragment(action: NavDirections) {
     findNavController().navigate(action)
 }
-fun Fragment.initToolbar(toolbar: Toolbar,showIconNavigation : Boolean = true){
+
+fun Fragment.initToolbar(toolbar: Toolbar, showIconNavigation: Boolean = true) {
     (activity as AppCompatActivity).apply {
         setSupportActionBar(toolbar)
         title = ""
     }
 
-    if (showIconNavigation){
+    if (showIconNavigation) {
         (activity as AppCompatActivity).supportActionBar?.apply {
             setHomeAsUpIndicator(R.drawable.ic_back)
             setDisplayHomeAsUpEnabled(true)
@@ -54,3 +56,8 @@ fun Fragment.initToolbar(toolbar: Toolbar,showIconNavigation : Boolean = true){
     }
 
 }
+
+fun Fragment.showSnackBar(
+    msg: Int,
+    duration: Int = Snackbar.LENGTH_SHORT,
+) = view?.let { Snackbar.make(it, msg, duration).show() }
