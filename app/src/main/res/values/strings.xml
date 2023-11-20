@@ -30,6 +30,9 @@
     <string name="text_dont_have_an_account_login_fragment">Não tem uma conta?</string>
     <string name="text_button_sign_up_login_fragment">Inscrever-se</string>
 
-
+    <!--    ForgotFragment-->
+    <string name="title_forgot_fragment">Crie sua nova senha</string>
+    <string name="text_hint_edit_email_forgot_fragment">Email</string>
+    <string name="text_button_forgot_fragment">Recuperar conta</string>
 
 </resources>

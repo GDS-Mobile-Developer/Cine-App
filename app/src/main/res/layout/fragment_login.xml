@@ -107,6 +107,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ck_remember_me" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/progress_loading"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            tools:src="@drawable/loading"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_sign_in_login"
+            app:layout_constraintVertical_bias="0.0" />
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_reset_password"
@@ -119,7 +131,7 @@
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_sign_in_login"/>
+            app:layout_constraintTop_toBottomOf="@id/progress_loading"/>
 
         <LinearLayout
             android:id="@+id/or_text_divisor"
