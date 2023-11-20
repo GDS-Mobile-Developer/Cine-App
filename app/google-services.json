@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "405286290081",
+    "project_id": "cine-app-17594",
+    "storage_bucket": "cine-app-17594.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405286290081:android:15a63272d90347643ca6e0",
+        "android_client_info": {
+          "package_name": "com.gdsdevtec.cineapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8hJglC7GF-3oFWR54CG__-31uXEpsPLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
