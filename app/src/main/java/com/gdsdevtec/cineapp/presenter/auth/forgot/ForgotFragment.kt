@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.gdsdevtec.cineapp.databinding.FragmentForgotBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ForgotFragment : Fragment() {
     private lateinit var binding : FragmentForgotBinding
     override fun onCreateView(
