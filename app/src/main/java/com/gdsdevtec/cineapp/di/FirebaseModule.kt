@@ -5,7 +5,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.ktx.app
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import dagger.Module
@@ -15,7 +14,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-data object FirebaseModule {
+object FirebaseModule {
     @Provides
     fun providesFirebaseAuth(): FirebaseAuth = Firebase.auth
 
