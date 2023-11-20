@@ -1,5 +1,6 @@
 package com.gdsdevtec.cineapp.presenter.auth.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,13 +11,15 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.gdsdevtec.cineapp.R
 import com.gdsdevtec.cineapp.databinding.FragmentLoginBinding
+import com.gdsdevtec.cineapp.presenter.MainActivity
+import com.gdsdevtec.cineapp.utils.FirebaseHelper
 import com.gdsdevtec.cineapp.utils.StateView
 import com.gdsdevtec.cineapp.utils.hideKeyboard
 import com.gdsdevtec.cineapp.utils.initToolbar
 import com.gdsdevtec.cineapp.utils.isEmailValid
 import com.gdsdevtec.cineapp.utils.isPasswordValid
-import com.gdsdevtec.cineapp.utils.messageToast
 import com.gdsdevtec.cineapp.utils.nextFragment
+import com.gdsdevtec.cineapp.utils.showSnackBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -92,12 +95,13 @@ class LoginFragment : Fragment() {
                 }
 
                 is StateView.Success -> {
-                    messageToast("success")
+                    startActivity(Intent(requireContext(), MainActivity::class.java))
+                    requireActivity().finish()
                 }
 
                 is StateView.Error -> {
                     binding.progressLoading.isVisible = false
-                    messageToast(stateView.msg)
+                    showSnackBar(msg = FirebaseHelper.validError(stateView.msg))
                 }
             }
         }

@@ -10,12 +10,14 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.gdsdevtec.cineapp.R
 import com.gdsdevtec.cineapp.databinding.FragmentRegisterBinding
+import com.gdsdevtec.cineapp.utils.FirebaseHelper
 import com.gdsdevtec.cineapp.utils.StateView
 import com.gdsdevtec.cineapp.utils.hideKeyboard
 import com.gdsdevtec.cineapp.utils.initToolbar
 import com.gdsdevtec.cineapp.utils.isEmailValid
 import com.gdsdevtec.cineapp.utils.isPasswordValid
 import com.gdsdevtec.cineapp.utils.messageToast
+import com.gdsdevtec.cineapp.utils.showSnackBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -89,7 +91,7 @@ class RegisterFragment : Fragment() {
 
                 is StateView.Error -> {
                     binding.progressLoading.isVisible = false
-                    messageToast("error -> ${stateView.msg}")
+                    showSnackBar(msg = FirebaseHelper.validError(stateView.msg))
                 }
             }
         }
