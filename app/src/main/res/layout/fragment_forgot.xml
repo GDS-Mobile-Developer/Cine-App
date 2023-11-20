@@ -43,7 +43,7 @@
             app:layout_constraintTop_toBottomOf="@id/image_forgot" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edit_email"
+            android:id="@+id/edit_password"
             style="@style/ThemeEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,13 +68,15 @@
             android:text="@string/text_button_forgot_fragment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_email" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_password" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/progress_loading"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
+            android:visibility="gone"
+            tools:visibility="visible"
             android:src="@drawable/loading"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
