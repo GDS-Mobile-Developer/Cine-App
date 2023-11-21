@@ -10,17 +10,13 @@ class MovieRepositoryImpl @Inject constructor(
     override suspend fun getGenres(
         apiKey: String,
         language: String?,
-    ) = serviceApi.getGenres(apiKey, language ?: LANGUAGE_REQUEST)
+    ) = serviceApi.getGenres(apiKey, language)
 
     override suspend fun getMoviesByGenre(
         apiKey: String,
         language: String?,
         withGenreId: Int,
     ) = serviceApi.getMoviesByGenre(
-        apiKey, language ?: LANGUAGE_REQUEST, withGenreId
+        apiKey, language, withGenreId
     ).results ?: emptyList()
-
-    private companion object {
-        const val LANGUAGE_REQUEST = "pt-br"
-    }
 }
