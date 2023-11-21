@@ -10,13 +10,13 @@ interface ServiceApi {
     @GET("genre/movie/list")
     suspend fun getGenres(
         @Query("api_key") apiKey: String,
-        @Query("language") language: String = "pt",
+        @Query("language") language: String?,
     ): GenreResponse
 
     @GET("discover/movie")
     suspend fun getMoviesByGenre(
         @Query("api_key") apiKey: String,
-        @Query("language") language: String = "pt",
+        @Query("language") language: String?,
         @Query("with_genres") withGenreId: Int,
     ): BasePaginationRemote<List<MovieResponse>>
 
