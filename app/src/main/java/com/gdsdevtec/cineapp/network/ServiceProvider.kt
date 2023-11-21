@@ -22,6 +22,5 @@ class ServiceProvider {
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
         .build()
-
     fun <API> createService(apiClass: Class<API>): API = retrofit.create(apiClass)
 }
