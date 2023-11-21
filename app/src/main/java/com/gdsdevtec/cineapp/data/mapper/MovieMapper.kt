@@ -4,6 +4,7 @@ import com.gdsdevtec.cineapp.data.model.GenreItemResponse
 import com.gdsdevtec.cineapp.data.model.MovieResponse
 import com.gdsdevtec.cineapp.domain.model.GenreItem
 import com.gdsdevtec.cineapp.domain.model.Movie
+import com.gdsdevtec.cineapp.presenter.model.GenrePresentation
 
 fun GenreItemResponse.toGenreItem() : GenreItem = GenreItem(
     id = this.id, name = this.name
@@ -24,5 +25,9 @@ fun MovieResponse.toMovie() : Movie = Movie(
     video = this.video,
     voteAverage = this.voteAverage,
     voteCount = this.voteCount
+)
+
+fun GenreItem.toGenrePresentation() : GenrePresentation = GenrePresentation(
+    id = this.id, name = this.name, movies = emptyList()
 
 )
