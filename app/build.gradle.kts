@@ -1,12 +1,22 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+import java.io.FileInputStream
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
     kotlin("kapt")
+    id("kotlin-parcelize")
     id("com.google.dagger.hilt.android")
     id("androidx.navigation.safeargs.kotlin")
 }
 
+val apiKeyPropertiesFile = rootProject.file("apiKey.properties")
+val apiKeyProperties = Properties()
+apiKeyProperties.load(FileInputStream(apiKeyPropertiesFile))
+val apiKey = apiKeyProperties["API_KEY"].toString()
+val baseUrl = apiKeyProperties["BASE_URL"].toString()
+val baseUrlImage = apiKeyProperties["BASE_URL_IMAGE"].toString()
 android {
     namespace = "com.gdsdevtec.cineapp"
     compileSdk = 34
@@ -19,6 +29,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "API_KEY", apiKey)
+        buildConfigField("String", "BASE_URL", baseUrl)
+        buildConfigField("String", "BASE_URL_IMAGE", baseUrlImage)
     }
 
     buildTypes {
@@ -39,6 +52,9 @@ android {
     }
     viewBinding {
         enable = true
+    }
+    buildFeatures {
+        buildConfig = true
     }
 }
 
