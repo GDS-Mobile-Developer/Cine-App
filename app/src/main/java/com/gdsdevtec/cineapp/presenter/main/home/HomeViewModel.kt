@@ -34,6 +34,23 @@ class HomeViewModel @Inject constructor(
             e.message?.let { StateView.Error(it) }
         }
     }
+    fun getMoviesByGenreId(genreId : Int?) = liveData(Dispatchers.IO) {
+        try {
+            emit(StateView.Loading)
+            val listMovies = getMoviesByGenreUseCase(
+                BuildConfig.API_KEY,
+                LANGUAGE_REQUEST,
+                genreId
+            )
+            emit(StateView.Success(data = listMovies, msg = null))
+        } catch (e: HttpException) {
+            e.printStackTrace()
+            e.message?.let { StateView.Error(it) }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            e.message?.let { StateView.Error(it) }
+        }
+    }
 
     private companion object{
         const val LANGUAGE_REQUEST = "pt-br"

@@ -10,7 +10,7 @@ class GetMoviesByGenreUseCase @Inject constructor(
     suspend operator fun invoke(
         apiKey: String,
         language: String?,
-        genreId: Int,
+        genreId: Int?,
     ) = movieRepository.getMoviesByGenre(
         apiKey, language, genreId
     ).map { it.toMovie() }
