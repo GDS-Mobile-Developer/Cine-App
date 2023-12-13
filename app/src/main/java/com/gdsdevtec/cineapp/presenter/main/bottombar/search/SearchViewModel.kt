@@ -1,4 +1,4 @@
-package com.gdsdevtec.cineapp.presenter.main.search
+package com.gdsdevtec.cineapp.presenter.main.bottombar.search
 
 import androidx.lifecycle.ViewModel
 

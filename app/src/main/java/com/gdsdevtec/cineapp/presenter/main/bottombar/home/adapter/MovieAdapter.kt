@@ -1,4 +1,4 @@
-package com.gdsdevtec.cineapp.presenter.main.home.adapter
+package com.gdsdevtec.cineapp.presenter.main.bottombar.home.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

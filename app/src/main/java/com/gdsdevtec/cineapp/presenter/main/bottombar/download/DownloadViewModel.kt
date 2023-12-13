@@ -1,4 +1,4 @@
-package com.gdsdevtec.cineapp.presenter.main.download
+package com.gdsdevtec.cineapp.presenter.main.bottombar.download
 
 import androidx.lifecycle.ViewModel
 

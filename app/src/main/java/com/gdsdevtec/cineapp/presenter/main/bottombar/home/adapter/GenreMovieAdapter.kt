@@ -1,4 +1,4 @@
-package com.gdsdevtec.cineapp.presenter.main.home.adapter
+package com.gdsdevtec.cineapp.presenter.main.bottombar.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gdsdevtec.cineapp.databinding.GenreItemBinding
 import com.gdsdevtec.cineapp.presenter.model.GenrePresentation
 
-class GenreMovieAdapter : ListAdapter<GenrePresentation, GenreMovieAdapter.MovieViewHolder>(DIFF_CALLBACK) {
+class GenreMovieAdapter(
+    private val clickShowAll: (Int) -> Unit,
+) : ListAdapter<GenrePresentation, GenreMovieAdapter.MovieViewHolder>(
+    DIFF_CALLBACK
+) {
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<GenrePresentation>() {
             override fun areItemsTheSame(
@@ -41,6 +45,9 @@ class GenreMovieAdapter : ListAdapter<GenrePresentation, GenreMovieAdapter.Movie
         holder.binding.rvGenreMovies.apply {
             adapter = movieAdapter
             setHasFixedSize(true)
+        }
+        holder.binding.textShowAll.setOnClickListener {
+            item.id?.let{ clickShowAll.invoke(it) }
         }
         movieAdapter.submitList(item.movies)
     }

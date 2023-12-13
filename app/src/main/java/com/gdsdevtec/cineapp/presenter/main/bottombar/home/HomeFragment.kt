@@ -1,4 +1,4 @@
-package com.gdsdevtec.cineapp.presenter.main.home
+package com.gdsdevtec.cineapp.presenter.main.bottombar.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.gdsdevtec.cineapp.databinding.FragmentHomeBinding
-import com.gdsdevtec.cineapp.presenter.main.home.adapter.GenreMovieAdapter
+import com.gdsdevtec.cineapp.presenter.main.bottombar.home.adapter.GenreMovieAdapter
 import com.gdsdevtec.cineapp.presenter.model.GenrePresentation
 import com.gdsdevtec.cineapp.utils.StateView
 import com.gdsdevtec.cineapp.utils.messageToast
+import com.gdsdevtec.cineapp.utils.nextFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -62,7 +63,7 @@ class HomeFragment : Fragment() {
                     }
                     is StateView.Success -> {
                         genreMutableList[index] = genrePresentation.copy(
-                            movies = stateView.data
+                            movies = stateView.data.take(5)
                         )
                         genreMovieAdapter.submitList(genreMutableList)
                         messageToast("Deu BOm ")
@@ -77,10 +78,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun initRecycler() {
-        genreMovieAdapter = GenreMovieAdapter()
+        genreMovieAdapter = GenreMovieAdapter{
+            nextFragment(HomeFragmentDirections.toMovieGenreFragment(it))
+        }
         with(binding.rvGenreMovies) {
             setHasFixedSize(true)
             adapter = genreMovieAdapter
         }
     }
+
 }

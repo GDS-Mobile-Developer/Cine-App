@@ -1,4 +1,4 @@
-package com.gdsdevtec.cineapp.presenter.main.home
+package com.gdsdevtec.cineapp.presenter.main.bottombar.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData

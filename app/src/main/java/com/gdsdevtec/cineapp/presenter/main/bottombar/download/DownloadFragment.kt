@@ -1,4 +1,4 @@
-package com.gdsdevtec.cineapp.presenter.main.profile
+package com.gdsdevtec.cineapp.presenter.main.bottombar.download
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,20 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.gdsdevtec.cineapp.R
-import com.gdsdevtec.cineapp.databinding.FragmentHomeBinding
-import com.gdsdevtec.cineapp.databinding.FragmentProfileBinding
+import com.gdsdevtec.cineapp.databinding.FragmentDownloadBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfileFragment : Fragment() {
-    private lateinit var binding : FragmentProfileBinding
+class DownloadFragment : Fragment() {
+    private lateinit var binding : FragmentDownloadBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ) = FragmentProfileBinding.inflate(
+    ) = FragmentDownloadBinding.inflate(
         inflater,container,false
     ).root.also {
-        binding = FragmentProfileBinding.bind(it)
+        binding = FragmentDownloadBinding.bind(it)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
